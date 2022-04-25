@@ -19,7 +19,7 @@ export class PostsService {
       .get<Post[]>(environment.pathUrl)
       .pipe(map((x) => x.slice(0, 10)));
   }
-  getPost(id: number): Observable<Post> {
+  getPostById(id: number): Observable<Post> {
     return this.http.get<Post>(environment.pathUrl + `/${id}`);
   }
 
