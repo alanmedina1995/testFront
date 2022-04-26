@@ -10,9 +10,10 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { PaginatorPipe } from './pipes/paginator.pipe';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -30,8 +31,9 @@ import { PaginatorPipe } from './pipes/paginator.pipe';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule, 
-    MatSliderModule,
     MatPaginatorModule,
+    MatCardModule,
+    MatButtonModule,
     ReactiveFormsModule
   ],
   providers: [],
