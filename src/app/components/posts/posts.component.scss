@@ -1,0 +1,16 @@
+.table-container {
+    width: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+.table {
+    border: #0c0909 1px solid;
+    thead th {
+      background-color: #64a1ca;
+
+    }
+}
+

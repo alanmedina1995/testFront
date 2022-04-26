@@ -1,0 +1,14 @@
+<div class = "post-container">
+    <div class="title-cointeiner">
+        <h5 aling="left" style="display: inline;">Detail Post: {{post.id}}</h5>
+        <h5 aling="right" *ngIf="dateLastComment">Último comentario: {{dateLastComment | date:"short" }}</h5>
+    </div>
+    
+    <div class = "title">
+        <h1>{{post.title}}</h1>
+    </div>
+
+<p>{{post.body}}</p>
+<app-comment (commentDate)="setDateComment($event)" [postId]="post.id"></app-comment>
+
+</div>
