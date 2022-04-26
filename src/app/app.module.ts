@@ -11,7 +11,9 @@ import { PostComponent } from './components/post/post.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import { PaginatorComponent } from './components/paginator/paginator.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { PaginatorPipe } from './pipes/paginator.pipe';
+
 
 
 @NgModule({
@@ -21,7 +23,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     PostsComponent,
     PostComponent,
     CommentComponent,
-    PaginatorComponent
+    PaginatorPipe,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     BrowserAnimationsModule,
     HttpClientModule, 
     MatSliderModule,
+    MatPaginatorModule,
     ReactiveFormsModule
   ],
   providers: [],

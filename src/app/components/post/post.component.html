@@ -1,10 +1,9 @@
 <div class = "post-container">
     <div class="title-cointeiner">
-        <h3 style="display: inline;">Detail Post: {{post.id}}</h3>
+        <h5 aling="left" style="display: inline;">Detail Post: {{post.id}}</h5>
+        <h5 aling="right" *ngIf="dateLastComment">Último comentario: {{dateLastComment | date:"short" }}</h5>
     </div>
-
-    <h4 *ngIf="dateLastComment">Último comentario: {{dateLastComment | date:"short" }}</h4>
-
+    
     <div class = "title">
         <h1>{{post.title}}</h1>
     </div>

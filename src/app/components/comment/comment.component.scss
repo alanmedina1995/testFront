@@ -1,23 +1,32 @@
-.card__title {
-    font-size: 2rem;
-}
+.sectionR{
+  width: 50%;
+  align-items: center;
 
-.card__comment {
+    .card__title {
+     font-size: 2rem;
+  }
+
+  .card__comment {
     padding-bottom: 20px;
     border-bottom: 2px solid;
     border-color: white;
-}
+  }
 
-.card__body {
+  .card__body {
     display: flex;
     justify-content: space-between;
-}
+  }
 
-.card__body i {
+  .card__body i {
     font-size: 20px;
+  }
+
 }
 
 form {
+    width: 30%;
+    align-content: center;
+    align-items: center;
     grid-gap: 0;
     fieldset {
       display: flex;

@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-        <tr *ngFor='let post of posts'>
+        <tr *ngFor="let post of posts | paginator:page_size:page_number">
             <th class="text-center align-middle" scope="row">{{post.id}}</th>
             <td class="text-center align-middle">{{post.title}}</td>
             <td class="text-center align-middle"><a routerLink="/post/{{post.id}}">
@@ -18,4 +18,5 @@
         </tr>
         </tbody>
   </table>
+  <mat-paginator [length]="posts.length" [pageSize]="page_size" [pageSizeOptions]="[10, 50, 100]" (page)="handlePage($event)" aria-label="Select page"></mat-paginator>
 </div>

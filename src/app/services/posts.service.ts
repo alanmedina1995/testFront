@@ -18,8 +18,7 @@ export class PostsService {
   
   getPosts(): Observable<Post[]> {
     return this.http
-      .get<Post[]>(environment.pathUrl)
-      .pipe(map((x) => x.slice(0, 10)));
+      .get<Post[]>(environment.pathUrl);
   }
   getPostById(id: number): Observable<Post> {
     return this.http.get<Post>(environment.pathUrl + `/${id}`);

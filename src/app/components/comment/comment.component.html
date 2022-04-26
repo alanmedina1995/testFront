@@ -1,17 +1,25 @@
 <section class="mb-5">
     <div class="card bg-dark border-light mt-5 animated">
+      <div class="text-center d-grid gap-2 col-2 mx-auto">
+        <button class="btn btn-light btn-lg mt-5" (click)="setCommentDate()">Emitir</button>
+      </div>    
+      <div class="text-center d-grid gap-2 col-2 mx-auto">
+        <a routerLink="/posts">
+          <button class="btn btn-outline-primary">Go to Home</button>
+        </a>
+      </div>
         <div class="card-header border-light text-center card__title">
             Comentarios
-        </div>        
+        </div>  
             <div class="card__comment" *ngFor="let comment of comments">
-                <h5 class="card-title mt-4">{{comment.name}}</h5>
+                <h5 class="card-title mt-4">Name: {{comment.name}}</h5>
                 <div class="card__body">
-                    <p class="card-text mt-3">{{comment.body}}</p>
-                    <button (click)="deleteComment(comment.id)" class="btn btn-dark" >Eliminar</button>
+                    <p class="card-text mt-3">Comentario: {{comment.body}}</p>
+                    <a isCommentInStorage(comment.id)>
+                      <button (click)="deleteComment(comment.id)" class="btn btn-dark"  >Eliminar</button>
+                    </a>
+                    
                 </div>
-            </div>
-            <div class="text-center d-grid gap-2 col-2 mx-auto">
-                <button class="btn btn-light btn-lg mt-5" (click)="setCommentDate()">Emitir</button>
             </div>
     </div>
 </section>
