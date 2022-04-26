@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PostsService } from '../posts.service';
-import { Comment } from '../models/commentInterface';
+import { PostsService } from '../../services/posts.service';
+import { Comment } from '../../models/commentInterface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

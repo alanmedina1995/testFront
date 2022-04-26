@@ -5,12 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ErrorComponent } from './error/error.component';
-import { PostsComponent } from './posts/posts.component';
-import { PostComponent } from './post/post.component';
-import { CommentComponent } from './comment/comment.component';
+import { ErrorComponent } from './components/error/error.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { PostComponent } from './components/post/post.component';
+import { CommentComponent } from './components/comment/comment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MatSliderModule } from '@angular/material/slider';
     ErrorComponent,
     PostsComponent,
     PostComponent,
-    CommentComponent
+    CommentComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
