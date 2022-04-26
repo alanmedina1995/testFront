@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PostsService } from '../../services/posts.service';
 import { Comment } from '../../models/commentInterface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-comment',
@@ -15,6 +16,8 @@ export class CommentComponent implements OnInit {
   dateOfComment: Date;
   comments: Comment[] = [];
   form!: FormGroup;
+  page_size: number = 10;
+  page_number: number = 1;
 
   constructor(private postService: PostsService, private formBuilder: FormBuilder) {
     this.commentDate = new EventEmitter();
@@ -31,6 +34,11 @@ export class CommentComponent implements OnInit {
         }
       })
 
+  }
+
+  handlePage(e:PageEvent){
+    this.page_size = e.pageSize
+    this.page_number = e.pageIndex + 1
   }
 
   setCommentDate(){

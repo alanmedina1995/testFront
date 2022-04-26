@@ -11,16 +11,15 @@
         <div class="card-header border-light text-center card__title">
             Comentarios
         </div>  
-            <div class="card__comment" *ngFor="let comment of comments">
+            <div class="card__comment" *ngFor="let comment of comments | paginator:page_size:page_number">
                 <h5 class="card-title mt-4">Name: {{comment.name}}</h5>
                 <div class="card__body">
                     <p class="card-text mt-3">Comentario: {{comment.body}}</p>
-                    <a isCommentInStorage(comment.id)>
                       <button (click)="deleteComment(comment.id)" class="btn btn-dark"  >Eliminar</button>
-                    </a>
-                    
                 </div>
             </div>
+            <mat-paginator [length]="comments.length" [pageSize]="page_size" [pageSizeOptions]="[10, 50, 100]" (page)="handlePage($event)" aria-label="Select page"></mat-paginator>
+
     </div>
 </section>
 
