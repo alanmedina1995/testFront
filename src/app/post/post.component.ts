@@ -12,7 +12,8 @@ export class PostComponent implements OnInit {
 
   post!: Post;
   currentId!: number;
-  dateLastComment!: string;
+  dateLastComment!: Date;
+  
 
   constructor(private activatedRoute: ActivatedRoute, private postsService: PostsService, private router: Router) { }
 
@@ -26,6 +27,10 @@ export class PostComponent implements OnInit {
         }
       );
     });
+  }
+
+  setDateComment(date: Date){
+    this.dateLastComment = date;
   }
 
 }

@@ -3,10 +3,13 @@
         <h3 style="display: inline;">Detail Post: {{post.id}}</h3>
     </div>
 
+    <h4 *ngIf="dateLastComment">Último comentario: {{dateLastComment | date:"short" }}</h4>
+
     <div class = "title">
         <h1>{{post.title}}</h1>
     </div>
 
 <p>{{post.body}}</p>
+<app-comment (commentDate)="setDateComment($event)" [postId]="post.id"></app-comment>
 
 </div>
