@@ -9,7 +9,7 @@
                   <mat-card-title-group>
                     <mat-card-title>{{comment.name}}</mat-card-title>
                     <mat-card-actions>
-                      <button mat-button (click)="deleteComment(comment.id)" class="btn btn-dark" >Eliminar</button>
+                      <button mat-raised-button color="warn" (click)="deleteComment(comment.id)" class="btn btn-dark" >Eliminar</button>
                     </mat-card-actions>
                   </mat-card-title-group>
                   <mat-card-content>
@@ -17,7 +17,7 @@
                   </mat-card-content>
                 </mat-card> 
                 <div class="text-center d-grid gap-2 col-2 mx-auto">
-                  <button mat-button class="btn btn-dark" (click)="setCommentDate()">Emitir</button>
+                  <button mat-stroked-button color="primary" (click)="setCommentDate()">Emitir</button>
                 </div>           
             <mat-paginator [length]="comments.length" [pageSize]="page_size" [pageSizeOptions]="[5, 10, 25, 50 ]" (page)="handlePage($event)" aria-label="Select page"></mat-paginator>
         </mat-card> 
@@ -33,7 +33,7 @@
         {{form.controls['name'].errors?.['required'] && 'Campo requerido'}}
         {{form.controls['name'].errors?.['minlength'] && 'Minimos 3 letras'}}
       </span>
-      <input class="form-control mt-3 mb-1" formControlName="email" type="email" placeholder="infor@mobydigital"
+      <input class="form-control mt-3 mb-1" formControlName="email" type="email" placeholder="info@mobydigital.com"
         aria-describedby="validationEmail" [ngClass]="{'is-invalid':isInvalid('email'),'is-valid':isValid('email')}" />
       <span class='form-text text-start text-danger' *ngIf='isInvalid("email")'>
         {{form.controls['email'].errors?.['required'] && 'Campo requerido'}}
@@ -47,11 +47,11 @@
         {{form.controls['body'].errors?.['maxlength'] && 'El comentario no puede superar los 500 caracteres.'}}
       </span>
       <div class='button-form'>
-        <button class="btn btn-primary my-4 px-5" [ngClass]="{'btn-danger':form.invalid}" type="submit"
+        <button mat-raised-button color="primary" [ngClass]="{'btn-danger':form.invalid}" type="submit"
           [disabled]="form.invalid">
           Agregar
         </button>
-        <button class="btn btn-danger my-4 px-5" (click)='this.form.reset()' [disabled]="!form.touched"
+        <button mat-raised-button color="warn" (click)='this.form.reset()' [disabled]="!form.touched"
           type='button'>Limpiar</button>
       </div>
     </fieldset>
