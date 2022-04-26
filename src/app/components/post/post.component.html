@@ -1,14 +1,18 @@
 <div class = "post-container">
-    <div class="title-cointeiner">
-        <h5 aling="left" style="display: inline;">Detail Post: {{post.id}}</h5>
-        <h5 aling="right" *ngIf="dateLastComment">Último comentario: {{dateLastComment | date:"short" }}</h5>
-    </div>
-    
-    <div class = "title">
-        <h1>{{post.title}}</h1>
-    </div>
-
-<p>{{post.body}}</p>
-<app-comment (commentDate)="setDateComment($event)" [postId]="post.id"></app-comment>
-
+    <mat-card class="example-card"> 
+        <mat-card-title-group>
+            <mat-card-subtitle>Details Post : {{post.id}}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="dateLastComment">Último comentario: {{dateLastComment | date:"short" }}</mat-card-subtitle>
+          <mat-card-title>{{post.title}}</mat-card-title>
+          <mat-card-actions>
+            <a routerLink="/posts">
+                <button mat-button class="btn btn-dark" >Go to Home</button>
+            </a>
+          </mat-card-actions>
+        </mat-card-title-group>
+        <mat-card-content>
+          {{post.body}}
+        </mat-card-content>
+        <app-comment  (commentDate)="setDateComment($event)" [postId]="post.id"></app-comment>
+      </mat-card> 
 </div>

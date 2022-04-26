@@ -1,25 +1,26 @@
 <section class="mb-5">
-    <div class="card bg-dark border-light mt-5 animated">
-      <div class="text-center d-grid gap-2 col-2 mx-auto">
-        <button class="btn btn-light btn-lg mt-5" (click)="setCommentDate()">Emitir</button>
-      </div>    
-      <div class="text-center d-grid gap-2 col-2 mx-auto">
-        <a routerLink="/posts">
-          <button class="btn btn-outline-primary">Go to Home</button>
-        </a>
-      </div>
-        <div class="card-header border-light text-center card__title">
-            Comentarios
-        </div>  
-            <div class="card__comment" *ngFor="let comment of comments | paginator:page_size:page_number">
-                <h5 class="card-title mt-4">Name: {{comment.name}}</h5>
-                <div class="card__body">
-                    <p class="card-text mt-3">Comentario: {{comment.body}}</p>
-                      <button (click)="deleteComment(comment.id)" class="btn btn-dark"  >Eliminar</button>
-                </div>
-            </div>
-            <mat-paginator [length]="comments.length" [pageSize]="page_size" [pageSizeOptions]="[10, 50, 100]" (page)="handlePage($event)" aria-label="Select page"></mat-paginator>
-
+    <div class="card bg-dark border-light mt-5 animated"> 
+      <mat-card class="example-card"> 
+        <mat-card-title-group>
+          <mat-card-title>Comentarios:</mat-card-title>
+        </mat-card-title-group>
+              <!-- Cards with media area -->
+                <mat-card class="example-card" *ngFor="let comment of comments | paginator:page_size:page_number"> 
+                  <mat-card-title-group>
+                    <mat-card-title>{{comment.name}}</mat-card-title>
+                    <mat-card-actions>
+                      <button mat-raised-button color="warn" (click)="deleteComment(comment.id)" class="btn btn-dark" >Eliminar</button>
+                    </mat-card-actions>
+                  </mat-card-title-group>
+                  <mat-card-content>
+                    {{comment.body}}
+                  </mat-card-content>
+                </mat-card> 
+                <div class="text-center d-grid gap-2 col-2 mx-auto">
+                  <button mat-stroked-button color="primary" (click)="setCommentDate()">Emitir</button>
+                </div>           
+            <mat-paginator [length]="comments.length" [pageSize]="page_size" [pageSizeOptions]="[5, 10, 25, 50 ]" (page)="handlePage($event)" aria-label="Select page"></mat-paginator>
+        </mat-card> 
     </div>
 </section>
 
@@ -32,7 +33,7 @@
         {{form.controls['name'].errors?.['required'] && 'Campo requerido'}}
         {{form.controls['name'].errors?.['minlength'] && 'Minimos 3 letras'}}
       </span>
-      <input class="form-control mt-3 mb-1" formControlName="email" type="email" placeholder="infor@mobydigital"
+      <input class="form-control mt-3 mb-1" formControlName="email" type="email" placeholder="info@mobydigital.com"
         aria-describedby="validationEmail" [ngClass]="{'is-invalid':isInvalid('email'),'is-valid':isValid('email')}" />
       <span class='form-text text-start text-danger' *ngIf='isInvalid("email")'>
         {{form.controls['email'].errors?.['required'] && 'Campo requerido'}}
@@ -46,12 +47,13 @@
         {{form.controls['body'].errors?.['maxlength'] && 'El comentario no puede superar los 500 caracteres.'}}
       </span>
       <div class='button-form'>
-        <button class="btn btn-primary my-4 px-5" [ngClass]="{'btn-danger':form.invalid}" type="submit"
+        <button mat-raised-button color="primary" [ngClass]="{'btn-danger':form.invalid}" type="submit"
           [disabled]="form.invalid">
           Agregar
         </button>
-        <button class="btn btn-danger my-4 px-5" (click)='this.form.reset()' [disabled]="!form.touched"
+        <button mat-raised-button color="warn" (click)='this.form.reset()' [disabled]="!form.touched"
           type='button'>Limpiar</button>
       </div>
     </fieldset>
   </form>
+

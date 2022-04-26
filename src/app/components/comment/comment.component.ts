@@ -19,6 +19,10 @@ export class CommentComponent implements OnInit {
   page_size: number = 10;
   page_number: number = 1;
 
+  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
+  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
+  originally bred for hunting.`;
+
   constructor(private postService: PostsService, private formBuilder: FormBuilder) {
     this.commentDate = new EventEmitter();
     this.dateOfComment = new Date();
