@@ -1,0 +1,57 @@
+<section class="mb-5">
+    <div class="card bg-dark border-light mt-5 animated">
+      <div class="text-center d-grid gap-2 col-2 mx-auto">
+        <button class="btn btn-light btn-lg mt-5" (click)="setCommentDate()">Emitir</button>
+      </div>    
+      <div class="text-center d-grid gap-2 col-2 mx-auto">
+        <a routerLink="/posts">
+          <button class="btn btn-outline-primary">Go to Home</button>
+        </a>
+      </div>
+        <div class="card-header border-light text-center card__title">
+            Comentarios
+        </div>  
+            <div class="card__comment" *ngFor="let comment of comments | paginator:page_size:page_number">
+                <h5 class="card-title mt-4">Name: {{comment.name}}</h5>
+                <div class="card__body">
+                    <p class="card-text mt-3">Comentario: {{comment.body}}</p>
+                      <button (click)="deleteComment(comment.id)" class="btn btn-dark"  >Eliminar</button>
+                </div>
+            </div>
+            <mat-paginator [length]="comments.length" [pageSize]="page_size" [pageSizeOptions]="[10, 50, 100]" (page)="handlePage($event)" aria-label="Select page"></mat-paginator>
+
+    </div>
+</section>
+
+<form [formGroup]="form" (ngSubmit)="saveComment()" class="my-4" autocomplete="off">
+    <fieldset>
+      <legend class='ms-5 mt-3'>Nuevo Comentario</legend>
+      <input class="form-control mt-3 mb-1" formControlName="name" id="nombre" placeholder="Nombre" type="text"
+        aria-describedby="validationName" [ngClass]="{'is-invalid':isInvalid('name'),'is-valid':isValid('name')}" />
+      <span class='form-text text-start text-danger' *ngIf='isInvalid("name")'>
+        {{form.controls['name'].errors?.['required'] && 'Campo requerido'}}
+        {{form.controls['name'].errors?.['minlength'] && 'Minimos 3 letras'}}
+      </span>
+      <input class="form-control mt-3 mb-1" formControlName="email" type="email" placeholder="infor@mobydigital"
+        aria-describedby="validationEmail" [ngClass]="{'is-invalid':isInvalid('email'),'is-valid':isValid('email')}" />
+      <span class='form-text text-start text-danger' *ngIf='isInvalid("email")'>
+        {{form.controls['email'].errors?.['required'] && 'Campo requerido'}}
+        {{form.controls['email'].errors?.['email'] && 'El correo ingresado No es valido'}}
+      </span>
+      <textarea class="form-control mt-3 mb-1" formControlName="body" id="mensaje"
+        placeholder="Agrega tus comentarios aqui" rows="10"
+        [ngClass]="{'is-invalid':isInvalid('body'),'is-valid':isValid('body')}"></textarea>
+      <span class='form-text text-start text-danger' *ngIf='isInvalid("body")'>
+        {{form.controls['body'].errors?.['required'] && 'Campo requerido.'}}
+        {{form.controls['body'].errors?.['maxlength'] && 'El comentario no puede superar los 500 caracteres.'}}
+      </span>
+      <div class='button-form'>
+        <button class="btn btn-primary my-4 px-5" [ngClass]="{'btn-danger':form.invalid}" type="submit"
+          [disabled]="form.invalid">
+          Agregar
+        </button>
+        <button class="btn btn-danger my-4 px-5" (click)='this.form.reset()' [disabled]="!form.touched"
+          type='button'>Limpiar</button>
+      </div>
+    </fieldset>
+  </form>
